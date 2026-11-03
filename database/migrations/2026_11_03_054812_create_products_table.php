@@ -13,14 +13,18 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedInteger('price');
-            $table->text('description')->nullable();
+            $table->unsignedBigInteger('barcode_number');
+            $table->string('product_name');
+            $table->unsignedInteger('buy_price');
+            $table->unsignedInteger('sell_price');
+            $table->foreignId('supplier_id')->constrained('suppliers');
             $table->timestamps();
         });
+
     }
 
     /**
+     * 
      * Reverse the migrations.
      */
     public function down(): void
